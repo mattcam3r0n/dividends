@@ -1,13 +1,22 @@
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 
 export default class AppState {
   @observable authenticated;
   @observable authenticating;
-
+  @observable sidebarOpen;
 
   constructor() {
     this.authenticated = false;
     this.authenticating = false;
+    this.sidebarOpen = false;
+  }
+
+  @action.bound closeSidebar() {
+      this.sidebarOpen = false;
+  }
+
+  @action.bound openSidebar() {
+      this.sidebarOpen = true;
   }
 
   //   async fetchData(pathname, id) {

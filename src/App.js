@@ -8,6 +8,7 @@ import {
 import { CssBaseline } from '@material-ui/core';
 
 import Header from "./components/Header";
+import Sidebar from './components/Sidebar';
 
 const theme = createMuiTheme({
   palette: {
@@ -37,7 +38,7 @@ const styles = (theme) => ({
   },
 });
 
-function ClippedDrawer(props) {
+function App(props) {
   const { classes } = props;
 
   return (
@@ -45,13 +46,14 @@ function ClippedDrawer(props) {
       <CssBaseline />
       <div className={classes.root}>
         <Header />
+        <Sidebar />
       </div>
     </MuiThemeProvider>
   );
 }
 
-ClippedDrawer.propTypes = {
+App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ClippedDrawer);
+export default withStyles(styles)(App);
