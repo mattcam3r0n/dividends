@@ -1,33 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import {
+  withStyles,
+  MuiThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
 
-// import { observer, inject } from 'mobx-react';
+import Header from "./components/Header";
 
-// @inject('appState')
-// @observer
-class App extends Component {
-  render() {
-    console.log(this.props);
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const theme = createMuiTheme({
+  palette: {
+    type: 'light',
+  },
+  overrides: {
+    root: {
+    },
+  },
+});
+
+const styles = (theme) => ({
+  root: {
+    flexGrow: 1,
+    height: '100vh',
+    zIndex: 1,
+    overflow: 'hidden',
+    position: 'relative',
+    display: 'flex',
+  },
+  content: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    marginTop: 64,
+    padding: 0, // theme.spacing.unit * 3,
+    minWidth: 0, // So the Typography noWrap works
+  },
+});
+
+function ClippedDrawer(props) {
+  const { classes } = props;
+
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className={classes.root}>
+        <Header />
       </div>
-    );
-  }
+    </MuiThemeProvider>
+  );
 }
 
-export default App;
+ClippedDrawer.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(ClippedDrawer);
