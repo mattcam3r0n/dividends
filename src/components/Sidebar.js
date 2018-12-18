@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -27,7 +28,8 @@ const styles = (theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
-    ...theme.mixins.toolbar,
+    height: 48,
+    // ...theme.mixins.toolbar,
   },
   drawer: {
     width: drawerWidth,
@@ -87,7 +89,7 @@ class Sidebar extends React.Component {
         <Divider />
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} component={Link} to="/">
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>
@@ -98,7 +100,7 @@ class Sidebar extends React.Component {
         <Divider />
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
+            <ListItem button key={text} component={Link} to="/about">
               <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
               </ListItemIcon>

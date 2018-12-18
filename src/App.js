@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import {
   withStyles,
   MuiThemeProvider,
@@ -7,7 +9,7 @@ import {
 } from '@material-ui/core/styles';
 import { CssBaseline } from '@material-ui/core';
 
-import Header from "./components/Header";
+import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 
 const theme = createMuiTheme({
@@ -15,8 +17,7 @@ const theme = createMuiTheme({
     type: 'light',
   },
   overrides: {
-    root: {
-    },
+    root: {},
   },
 });
 
@@ -38,16 +39,26 @@ const styles = (theme) => ({
   },
 });
 
+const Index = () => <h2>Home</h2>;
+const About = () => <h2>About</h2>;
+
+
 function App(props) {
   const { classes } = props;
 
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <div className={classes.root}>
-        <Header />
-        <Sidebar />
-      </div>
+      <Router>
+        <div className={classes.root}>
+          <Header />
+          <Sidebar />
+          <main className={classes.content}>
+            <Route path="/" exact component={Index} />
+            <Route path="/about" exact component={About} />
+          </main>
+        </div>
+      </Router>{' '}
     </MuiThemeProvider>
   );
 }
