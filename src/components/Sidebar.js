@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer, inject } from 'mobx-react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
@@ -14,10 +14,10 @@ import {
   ListItemText,
 } from '@material-ui/core';
 import {
-    MoveToInbox as InboxIcon,
-    Mail as MailIcon,
-    ChevronLeft as ChevronLeftIcon,
-    ChevronRight as ChevronRightIcon
+  MoveToInbox as InboxIcon,
+  Mail as MailIcon,
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
 } from '@material-ui/icons';
 
 const drawerWidth = 240;
@@ -88,16 +88,21 @@ class Sidebar extends React.Component {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text} component={Link} to="/">
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button component={Link} to="/">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Overview" />
+          </ListItem>
+          <ListItem button component={Link} to="/portfolio">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Portfolio" />
+          </ListItem>
         </List>
         <Divider />
+        {/* TODO: Remove this section.  filler. */}
         <List>
           {['All mail', 'Trash', 'Spam'].map((text, index) => (
             <ListItem button key={text} component={Link} to="/about">

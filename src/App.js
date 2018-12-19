@@ -11,6 +11,8 @@ import { CssBaseline } from '@material-ui/core';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import Overview from './components/Overview';
+import PortfolioView from './components/PortfolioView';
 
 const theme = createMuiTheme({
   palette: {
@@ -39,9 +41,6 @@ const styles = (theme) => ({
   },
 });
 
-const Index = () => <h2>Home</h2>;
-const About = () => <h2>About</h2>;
-
 
 function App(props) {
   const { classes } = props;
@@ -54,8 +53,8 @@ function App(props) {
           <Header />
           <Sidebar />
           <main className={classes.content}>
-            <Route path="/" exact component={Index} />
-            <Route path="/about" exact component={About} />
+            <Route path="/" exact component={Overview} />
+            <Route path="/portfolio" exact component={PortfolioView} />
           </main>
         </div>
       </Router>{' '}
