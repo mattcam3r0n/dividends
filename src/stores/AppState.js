@@ -4,6 +4,7 @@ export default class AppState {
   @observable authenticated;
   @observable authenticating;
   @observable sidebarOpen;
+  @observable selectedPortfolio;
 
   constructor() {
     this.authenticated = false;

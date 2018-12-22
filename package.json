@@ -7,6 +7,8 @@
     "@material-ui/icons": "^3.0.1",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
+    "node-iex": "0.0.3",
+    "numeral": "^2.0.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router-dom": "^4.3.1",

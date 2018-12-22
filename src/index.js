@@ -6,10 +6,17 @@ import * as serviceWorker from './serviceWorker';
 
 import { Provider } from 'mobx-react';
 import AppState from './stores/AppState';
+import PortfolioStore from './stores/PortfolioStore';
+import QuoteService from './services/QuoteService';
 
 const appState = new AppState();
+const portfolioStore = new PortfolioStore(new QuoteService());
+
 ReactDOM.render(
-  <Provider appState={appState}>
+  <Provider 
+    appState={appState}
+    portfolioStore={portfolioStore}
+    >
     <App />
   </Provider>,
   document.getElementById('root')

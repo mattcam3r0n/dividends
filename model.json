@@ -1,0 +1,45 @@
+{
+  "portfolio": {
+    "name": "",
+    "accountNumber": "",
+    "holdings": [
+      {
+        "symbol": "MSFT",
+        "companyName": "Microsoft",
+        "shares": 100,
+        "price": 100.00,
+        "marketValue": 10000, // derived
+        "marketValuePct": 0.03,
+        "averageCost": 80, // derived?
+        "costBasis": 8000, // derived?
+        "gainLoss": 2000,
+        "yieldOnCost": 0.045,
+        "annualDividend": 3.00,
+        "yield": 0.025, // derived
+        "annualIncome": 300.00, // derived
+        "annualIncomePct": 0.03,
+      }
+    ],
+    "transactions": [
+        {
+            "type": "BUY",
+            "date": "12/19/2018",
+            "symbol": "MSFT",
+            "shares": 100,
+            "price": 99.00,
+            "commission": 0.00
+        }
+    ]
+  },
+  "security": {
+    "symbol": "MSFT",
+    "companyName": ""
+  },
+  "quote": {
+    "date": "12/19/2018",
+    "symbol": "MSFT",
+    "price": 100.00,
+    "annualDividend": 3.00,
+    "yield": 0.03
+  }
+}

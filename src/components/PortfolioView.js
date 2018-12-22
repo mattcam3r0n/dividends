@@ -1,12 +1,45 @@
 import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
+import { withStyles } from '@material-ui/core/styles';
 
-class PortfolioView extends Component {
-    state = {  }
-    render() {
-        return (
-            <h1>PortfolioView</h1>
-        );
+import Paper from '@material-ui/core/Paper';
+import HoldingsTable from './HoldingsTable';
+
+const styles = (theme) => ({
+    paper: {
+        margin: 15
     }
+});
+
+@inject('appState', 'portfolioStore')
+@observer
+class PortfolioView extends Component {
+  state = {
+      holdings: []
+  };
+
+  componentDidMount() {
+    const { appState, portfolioStore } = this.props;
+    //appState.selectedPortfolio = portfolioStore.getPortfolio();
+
+    portfolioStore.getHoldings().then((holdings) => {
+        this.setState({
+            holdings: holdings
+        })
+    });
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { holdings = [] } = this.state;
+    return (
+      <React.Fragment>
+        <Paper className={classes.paper}>
+          <HoldingsTable holdings={holdings} />
+        </Paper>
+      </React.Fragment>
+    );
+  }
 }
 
-export default PortfolioView;
+export default withStyles(styles)(PortfolioView);
