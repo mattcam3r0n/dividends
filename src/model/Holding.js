@@ -39,5 +39,4 @@ export default class Holding {
         return this.quote.dividendRate * this.shares;
     }
 
-
 }

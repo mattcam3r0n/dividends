@@ -33,11 +33,9 @@ class PortfolioView extends Component {
     const { classes } = this.props;
     const { holdings = [] } = this.state;
     return (
-      <React.Fragment>
         <Paper className={classes.paper}>
           <HoldingsTable holdings={holdings} />
         </Paper>
-      </React.Fragment>
     );
   }
 }
