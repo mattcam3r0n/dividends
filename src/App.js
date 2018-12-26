@@ -13,6 +13,7 @@ import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import Overview from './components/Overview';
 import PortfolioView from './components/PortfolioView';
+import SecurityView from './components/SecurityView';
 
 const theme = createMuiTheme({
   palette: {
@@ -55,6 +56,7 @@ function App(props) {
           <main className={classes.content}>
             <Route path="/" exact component={Overview} />
             <Route path="/portfolio" exact component={PortfolioView} />
+            <Route path="/security" exact component={SecurityView} />
           </main>
         </div>
       </Router>{' '}

@@ -100,19 +100,14 @@ class Sidebar extends React.Component {
             </ListItemIcon>
             <ListItemText primary="Portfolio" />
           </ListItem>
+          <ListItem button component={Link} to="/security">
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="Security" />
+          </ListItem>
         </List>
         <Divider />
-        {/* TODO: Remove this section.  filler. */}
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text} component={Link} to="/about">
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
       </Drawer>
     );
   }

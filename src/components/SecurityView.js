@@ -3,41 +3,39 @@ import { inject, observer } from 'mobx-react';
 import { withStyles } from '@material-ui/core/styles';
 
 import Paper from '@material-ui/core/Paper';
-import HoldingsTable from './HoldingsTable';
+import DividendChart from './DividendChart';
 
 const styles = (theme) => ({
-    paper: {
-        margin: 15
-    }
+  paper: {
+    margin: 15,
+  },
 });
 
 @inject('appState', 'portfolioStore')
 @observer
-class PortfolioView extends Component {
-  state = {
-      holdings: []
-  };
+class SecurityView extends Component {
+  state = {};
 
   componentDidMount() {
     const { portfolioStore } = this.props;
 
-    portfolioStore.getHoldings().then((holdings) => {
+    portfolioStore.getDividendHistory(['MSFT']).then(data => {
         this.setState({
-            holdings: holdings
-        });
-        //portfolioStore.getDividendHistory(holdings.map(h => h.symbol));
+                holdings: data['MSFT']
+            });
     });
+    //portfolioStore.getDividendHistory(holdings.map(h => h.symbol));
   }
 
   render() {
     const { classes } = this.props;
     const { holdings = [] } = this.state;
     return (
-        <Paper className={classes.paper}>
-          <HoldingsTable holdings={holdings} />
-        </Paper>
+      <Paper className={classes.paper}>
+        <DividendChart />
+      </Paper>
     );
   }
 }
 
-export default withStyles(styles)(PortfolioView);
+export default withStyles(styles)(SecurityView);

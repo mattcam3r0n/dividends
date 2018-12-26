@@ -47,4 +47,8 @@ export default class PortfolioStore {
       );
     });
   }
+
+  getDividendHistory(symbols) {
+      return this.quoteService.getDividendHistory(symbols);
+  }
 }

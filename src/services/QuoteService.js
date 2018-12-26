@@ -33,4 +33,15 @@ export default class QuoteService {
             });
         // return quotes (mapped by symbol?)
     }
+
+    getDividendHistory(symbolList) {
+        const types = ["dividends"];
+        const range = "5y";
+        const filter = null;
+        return iex.http.batch.market(symbolList, types, range, filter)
+            .then(data => {
+                console.log('dividends', data);
+                return data;
+            });
+    }
 }
